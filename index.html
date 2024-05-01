@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" /> 
+    <!-- Define o conjunto de caracteres como UTF-8 para suportar caracteres especiais -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+    <!-- Define a compatibilidade com o Internet Explorer -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <!-- Define a escala inicial e a largura da viewport para dispositivos móveis -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    /> <!-- Inclui o arquivo CSS da biblioteca Font Awesome (ícones) a partir de um CDN -->
+    <link rel="stylesheet" href="style.css" /> 
+    <!-- Inclui o arquivo de estilo local "style.css" -->
+    <title>Diel Energia</title> 
+    <!-- Define o título da página como "Diel Energia" -->
+  </head>
+  <body>
+    <!-- Container principal -->
+    <div class="container">
+        <!-- Lado esquerdo da página -->
+        <div class="left">
+            <!-- Calendário -->
+            <div class="calendar">
+                <!-- Cabeçalho do mês -->
+                <div class="month">
+                    <!-- Botão para o mês anterior -->
+                    <i class="fas fa-angle-left prev"></i>
+                    <!-- Exibição da data atual -->
+                    <div class="date"></div>
+                    <!-- Botão para o próximo mês -->
+                    <i class="fas fa-angle-right next"></i>
+                </div>
+                <!-- Dias da semana -->
+                <div class="weekdays">
+                    <!-- Abreviações dos dias da semana -->
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sex</div>
+                    <div>Sab</div>
+                </div>
+                <!-- Contêiner para os dias do mês -->
+                <div class="days"></div>
+                <!-- Seção para ir para a data de hoje -->
+                <div class="goto-today">
+                    <!-- Entrada para inserir a data desejada (mm/yyyy) -->
+                    <div class="goto">
+                        <input type="text" placeholder="mm/yyyy" class="date-input" />
+                        <!-- Botão para ir para a data inserida -->
+                        <button class="goto-btn">Ir</button>
+                    </div>
+                    <!-- Botão para retornar à data de hoje -->
+                    <button class="today-btn">Hoje</button>
+                </div>
+            </div>
+        </div>
+        <!-- Lado direito da página -->
+        <div class="right">
+            <!-- Exibição da data atual (dia da semana) -->
+            <div class="today-date">
+                <div class="event-day"></div>
+                <!-- Exibição da data atual (dia, mês e ano) -->
+                <div class="event-date"></div>
+            </div>
+            <!-- Contêiner para exibir os eventos -->
+            <div class="events"></div>
+            <!-- Contêiner para adicionar novos eventos -->
+            <div class="add-event-wrapper">
+                <!-- Cabeçalho para adicionar evento -->
+                <div class="add-event-header">
+                    <!-- Título para adicionar evento -->
+                    <div class="title">Tarefa</div>
+                    <!-- Ícone para fechar o formulário de adicionar evento -->
+                    <i class="fas fa-times close"></i>
+                </div>
+                <!-- Corpo do formulário de adicionar evento -->
+                <div class="add-event-body">
+                    <!-- Entrada para o título do evento -->
+                    <div class="add-event-input">
+                        <input type="text" placeholder="Titulo" class="event-name" />
+                    </div>
+                    <!-- Entrada para o horário de início do evento -->
+                    <div class="add-event-input">
+                        <input type="text" placeholder="Inicio 🕗" class="event-time-from" />
+                    </div>
+                    <!-- Entrada para o horário de término do evento -->
+                    <div class="add-event-input">
+                        <input type="text" placeholder="Término 🕗" class="event-time-to" />
+                    </div>
+                </div>
+                <!-- Rodapé do formulário de adicionar evento -->
+                <div class="add-event-footer">
+                    <!-- Botão para adicionar o evento -->
+                    <button class="add-event-btn">Adicionar</button>
+                </div>
+            </div>
+        </div>
+        <!-- Botão flutuante para adicionar novo evento -->
+        <button class="add-event">
+            <!-- Ícone de adicionar evento -->
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+
+    <!-- Script JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,650 @@
+/* Define variáveis de cor para reutilização */
+:root {
+  --primary-clr: #181842;
+}
+
+
+/* Define estilos para todos os elementos HTML */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Estiliza a barra de rolagem no navegador Chrome */
+/* Track */
+::-webkit-scrollbar {
+  width: 5px;
+}
+/* Track background */
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 50px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-clr);
+  border-radius: 50px;
+}
+
+/* Estilos globais para o corpo da página */
+body {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+  background-color: #e2e1dc;
+}
+
+/* Estilos para o contêiner principal */
+.container {
+  position: relative;
+  width: 1200px;
+  min-height: 850px;
+  margin: 0 auto;
+  padding: 5px;
+  color: #fff;
+  display: flex;
+  border-radius: 10px;
+  background-color: #373c4f;
+}
+
+/* Estilos para o lado esquerdo do contêiner */
+.left {
+  width: 60%;
+  padding: 20px;
+}
+
+/* Estilos para o calendário */
+.calendar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: #878895;
+  border-radius: 5px;
+  background-color: #fff;
+  background-image: url("./Icon/logo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Pseudo-elementos para adicionar elementos visuais ao calendário */
+.calendar::before,
+.calendar::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 12px;
+  height: 97%;
+  border-radius: 0 5px 5px 0;
+  background-color: #d3d4d6d7;
+  transform: translateY(-50%);
+}
+.calendar::before {
+  height: 94%;
+  left: calc(100% + 12px);
+  background-color: rgb(153, 153, 153);
+}
+
+/* Estilos para o cabeçalho do mês no calendário */
+.calendar .month {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Estilos para os botões de navegação do mês */
+.calendar .month .prev,
+.calendar .month .next {
+  cursor: pointer;
+}
+
+/* Estilizações para os botões de navegação ao passar o mouse */
+.calendar .month .prev:hover,
+.calendar .month .next:hover {
+  color: var(--primary-clr);
+}
+
+/* Estilos para os dias da semana no calendário */
+.calendar .weekdays {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+/* Estilos para os dias da semana no calendário */
+.weekdays div {
+  width: 14.28%; /* Cada dia da semana ocupa uma largura de 14.28% para distribuir igualmente */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos para os dias do calendário */
+.calendar .days {
+  width: 100%; /* O container de dias ocupa 100% da largura */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.calendar .days .day {
+  width: 14.28%; /* Cada dia ocupa uma largura de 14.28% para distribuir igualmente */
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--primary-clr); /* Define a cor do texto com base na variável --primary-clr */
+  border: 1px solid #f5f5f5; /* Adiciona borda ao redor de cada dia */
+}
+
+/* Estilização das bordas dos dias */
+.calendar .days .day:nth-child(7n + 1) {
+  border-left: 2px solid #f5f5f5; /* Adiciona borda à esquerda para o primeiro dia de cada semana */
+}
+.calendar .days .day:nth-child(7n) {
+  border-right: 2px solid #f5f5f5; /* Adiciona borda à direita para o último dia de cada semana */
+}
+.calendar .days .day:nth-child(-n + 7) {
+  border-top: 2px solid #f5f5f5; /* Adiciona borda superior para os primeiros dias do mês */
+}
+.calendar .days .day:nth-child(n + 29) {
+  border-bottom: 2px solid #f5f5f5; /* Adiciona borda inferior para os últimos dias do mês */
+}
+
+/* Estilização ao passar o mouse sobre os dias do calendário */
+.calendar .days .day:not(.prev-date, .next-date):hover {
+  color: #fff; /* Altera a cor do texto ao passar o mouse */
+  background-color: var(--primary-clr); /* Altera a cor de fundo ao passar o mouse */
+}
+
+/* Estilos para os dias de data anterior e posterior */
+.calendar .days .prev-date,
+.calendar .days .next-date {
+  color: #b3b3b3; /* Define a cor do texto para dias de datas anteriores ou posteriores */
+}
+
+/* Estilos para os dias ativos (hoje ou selecionado) */
+.calendar .days .active {
+  position: relative;
+  font-size: 2rem; /* Tamanho maior de fonte para o dia ativo */
+  color: #fff; /* Cor do texto para o dia ativo */
+  background-color: var(--primary-clr); /* Cor de fundo para o dia ativo */
+}
+
+/* Pseudo-elemento para adicionar um efeito de destaque no dia ativo */
+.calendar .days .active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 10px 2px var(--primary-clr); /* Sombra ao redor do dia ativo */
+}
+
+/* Estilos para o dia de hoje */
+.calendar .days .today {
+  font-size: 2rem; /* Tamanho maior de fonte para o dia de hoje */
+}
+
+/* Estilos para os dias com eventos */
+.calendar .days .event {
+  position: relative;
+}
+
+/* Pseudo-elemento para representar um indicador de evento */
+.calendar .days .event::after {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  width: 75%;
+  height: 6px;
+  border-radius: 30px;
+  transform: translateX(-50%);
+  background-color: var(--primary-clr); /* Cor do indicador de evento */
+}
+
+/* Estilização ao passar o mouse sobre dias com eventos */
+.calendar .days .day:hover.event::after {
+  background-color: #fff; /* Altera a cor do indicador ao passar o mouse */
+}
+
+/* Estilização para o indicador de evento ativo */
+.calendar .days .active.event::after {
+  background-color: #fff; /* Cor do indicador de evento ativo */
+  bottom: 20%; /* Posição ajustada para o indicador de evento ativo */
+}
+
+/* Estilos adicionais para o dia ativo com evento */
+.calendar .days .active.event {
+  padding-bottom: 10px; /* Espaçamento inferior adicional para o dia ativo com evento */
+}
+
+/* Estilos para a seção de navegação para a data de hoje */
+.calendar .goto-today {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  color: var(--primary-clr); /* Cor do texto */
+}
+
+/* Estilos para a entrada de data e botão de navegação */
+.calendar .goto-today .goto {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid var(--primary-clr); /* Borda ao redor da entrada de data */
+}
+
+/* Estilos para a entrada de data */
+.calendar .goto-today .goto input {
+  width: 100%;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 20px;
+  color: var(--primary-clr); /* Cor do texto na entrada de data */
+}
+
+/* Estilos para o botão "Ir" na navegação de data */
+.calendar .goto-today button {
+  padding: 5px 10px;
+  border: 1px solid var(--primary-clr); /* Borda ao redor do botão "Ir" */
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--primary-clr); /* Cor do texto no botão "Ir" */
+}
+
+/* Estilização ao passar o mouse sobre o botão "Ir" */
+.calendar .goto-today button:hover {
+  color: #fff; /* Altera a cor do texto ao passar o mouse */
+  background-color: var(--primary-clr); /* Altera a cor de fundo ao passar o mouse */
+}
+
+/* Estilos adicionais para o botão "Ir" na navegação de data */
+.calendar .goto-today .goto button {
+  border: none;
+  border-left: 1px solid var(--primary-clr); /* Adiciona uma linha à esquerda do botão "Ir" */
+  border-radius: 0;
+}
+
+/* Estilos para o lado direito do contêiner */
+.container .right {
+  position: relative;
+  width: 40%; /* Largura do lado direito do contêiner */
+  min-height: 100%;
+  padding: 20px 0;
+}
+
+/* Estilos para a seção da data de hoje */
+.right .today-date {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  padding-left: 70px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-transform: capitalize; /* Converte o texto em maiúsculas e minúsculas */
+}
+
+/* Estilos para o dia da semana na seção da data de hoje */
+.right .today-date .event-day {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+/* Estilos para a data na seção da data de hoje */
+.right .today-date .event-date {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #878895; /* Cor do texto para a data */
+}
+/* Estilos para a seção de eventos */
+.events {
+  width: 100%;
+  height: 100%;
+  max-height: 600px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-left: 4px;
+}
+
+/* Estilos para cada evento na seção de eventos */
+.events .event {
+  position: relative;
+  width: 95%;
+  min-height: 70px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 20px;
+  padding-left: 50px;
+  color: #fff;
+  background: linear-gradient(90deg, #3f4458, transparent); /* Fundo com gradiente */
+  cursor: pointer;
+}
+
+/* Estilos para eventos pares */
+.events .event:nth-child(even) {
+  background: transparent; /* Altera o fundo para eventos pares */
+}
+
+/* Estilos ao passar o mouse sobre os eventos */
+.events .event:hover {
+  background: linear-gradient(90deg, var(--primary-clr), transparent); /* Altera o fundo ao passar o mouse */
+}
+
+/* Estilos para o título do evento */
+.events .event .title {
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.events .event .title .event-title {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 20px;
+}
+
+/* Estilos para o ícone do evento */
+.events .event i {
+  color: var(--primary-clr); /* Cor do ícone */
+  font-size: 0.5rem;
+}
+
+.events .event:hover i {
+  color: #fff; /* Altera a cor do ícone ao passar o mouse */
+}
+
+/* Estilos para o horário do evento */
+.events .event .event-time {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #878895;
+  margin-left: 15px;
+  pointer-events: none;
+}
+
+.events .event:hover .event-time {
+  color: #fff; /* Altera a cor do horário ao passar o mouse */
+}
+
+/* Adiciona um símbolo de "✓" após o evento */
+.events .event::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  font-size: 3rem;
+  line-height: 1;
+  display: none; /* Oculta por padrão */
+  align-items: center;
+  justify-content: center;
+  opacity: 0.3;
+  color: var(--primary-clr); /* Cor do símbolo */
+  transform: translateY(-50%);
+}
+
+/* Exibe o símbolo após o evento ao passar o mouse */
+.events .event:hover::after {
+  display: flex;
+}
+
+/* Estilos para o botão de adicionar evento */
+.add-event {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #878895;
+  border: 2px solid #878895;
+  opacity: 0.5;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.add-event:hover {
+  opacity: 1; /* Altera a opacidade ao passar o mouse */
+}
+
+.add-event i {
+  pointer-events: none;
+}
+
+/* Estilos para o texto de "Sem eventos" */
+.events .no-event {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #878895;
+}
+
+/* Estilos para o wrapper do formulário de adicionar evento */
+.add-event-wrapper {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  width: 90%;
+  max-height: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: #fff;
+  transform: translateX(-50%);
+  transition: max-height 0.5s ease; /* Transição para expandir/camuflar */
+}
+
+.add-event-wrapper.active {
+  max-height: 300px; /* Altura máxima quando ativo */
+}
+
+.add-event-header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  color: #373c4f;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.add-event-header .close {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.add-event-header .close:hover {
+  color: var(--primary-clr); /* Altera a cor ao passar o mouse */
+}
+
+.add-event-header .title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.add-event-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+}
+
+.add-event-body .add-event-input {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.add-event-body .add-event-input input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #f5f5f5;
+  padding: 0 10px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #373c4f;
+}
+
+.add-event-body .add-event-input input::placeholder {
+  color: #a5a5a5; /* Cor do texto de espaço reservado */
+}
+
+.add-event-body .add-event-input input:focus {
+  border-bottom: 1px solid var(--primary-clr); /* Altera a cor da borda ao focar */
+}
+
+.add-event-body .add-event-input input:focus::placeholder {
+  color: var(--primary-clr); /* Altera a cor do texto de espaço reservado ao focar */
+}
+
+.add-event-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.add-event-footer .add-event-btn {
+  height: 40px;
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  color: #fff;
+  background-color: var(--primary-clr); /* Cor do botão */
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid var(--primary-clr); /* Borda do botão */
+}
+
+.add-event-footer .add-event-btn:hover {
+  background-color: transparent; /* Altera a cor de fundo ao passar o mouse */
+  color: var(--primary-clr); /* Altera a cor do texto ao passar o mouse */
+}
+
+
+/* Media queries para telas menores que 1000px */
+@media screen and (max-width: 1000px) {
+  body {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .container {
+    min-height: 100vh;
+    flex-direction: column;
+    border-radius: 0;
+  }
+  .container .left {
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+  }
+  .container .right {
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+  }
+  .calendar::before,
+  .calendar::after {
+    top: 100%;
+    left: 50%;
+    width: 97%;
+    height: 12px;
+    border-radius: 0 0 5px 5px;
+    transform: translateX(-50%);
+  }
+  .calendar::before {
+    width: 94%;
+    top: calc(100% + 12px);
+  }
+  .events {
+    padding-bottom: 340px;
+  }
+  .add-event-wrapper {
+    bottom: 100px;
+  }
+}
+
+/* Media queries para telas menores que 500px */
+@media screen and (max-width: 500px) {
+  .calendar .month {
+    height: 75px; /* Altura do mês reduzida */
+  }
+  .calendar .weekdays {
+    height: 50px; /* Altura dos dias da semana reduzida */
+  }
+  .calendar .days .day {
+    height: 40px; /* Altura dos dias reduzida */
+    font-size: 0.8rem; /* Tamanho da fonte reduzido para os dias */
+  }
+  .calendar .days .day.active,
+  .calendar .days .day.today {
+    font-size: 1rem; /* Tamanho da fonte aumentado para dias ativos e de hoje */
+  }
+  .right .today-date {
+    padding: 20px; /* Preenchimento aumentado para a data de hoje */
+  }
+}
